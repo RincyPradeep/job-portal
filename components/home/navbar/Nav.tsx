@@ -1,4 +1,5 @@
 'use client'
+import ThemeToggler from '@/components/helper/ThemeToggler'
 import { NavLinks } from '@/constant/Contstant'
 import Link from 'next/link'
 import React, {useEffect, useState} from 'react'
@@ -26,16 +27,16 @@ const Nav = ({openNav}:Props) => {
 
   return (
     <div className={`w-full h-[12vh] transition-all duration-200 z-100 fixed 
-        ${navBg?'bg-white shadow-md': 'fixed'}`}
+        ${navBg?'bg-white dark:bg-gray-900 shadow-md': 'fixed'}`}
     >
         <div className='flex justify-between items-center w-[92%] h-full mx-auto'>
             <div className='flex items-center sm:space-x-20'>
                 {/* logo */}
                 <div className='flex items-center space-x-2'>
-                    <div className='w-10 h-10 rounded-full flex flex-col items-center justify-center bg-cyan-800'>
-                        <LuNetwork className='w-5 h-5 text-white' />
+                    <div className='w-10 h-10 rounded-full flex flex-col items-center justify-center bg-cyan-800 dark:bg-white'>
+                        <LuNetwork className='w-5 h-5 text-white dark:text-black' />
                     </div>
-                    <h1 className='text-cyan-800 font-bold text-xl hidden sm:block md:text-2xl'>DevHire</h1>
+                    <h1 className='text-cyan-800 dark:text-white font-bold text-xl hidden sm:block md:text-2xl'>DevHire</h1>
                 </div>
 
                 {/* Nav links */}
@@ -45,7 +46,7 @@ const Nav = ({openNav}:Props) => {
                             return <Link 
                                         key={link.id} 
                                         href={link.url}
-                                        className='text-base font-medium hover:text-cyan-700 transition-all duration-200'
+                                        className='text-base font-medium hover:text-cyan-700 dark:hover:text-cyan-200 transition-all duration-200'
                                     >
                                         <p>{link.label}</p>
                                     </Link>
@@ -56,8 +57,8 @@ const Nav = ({openNav}:Props) => {
             {/* Buttons */}
             <div className='flex items-center space-x-4'>
                 {/* Login /Register button */}
-                <button className='px-8 py-2.5 text-xs sm:text-sm rounded-lg cursor-pointer bg-gray-100 
-                    hover:bg-gray-300 transition-all duration-300 '>
+                <button className='px-8 py-2.5 text-xs sm:text-sm rounded-lg cursor-pointer bg-gray-100 dark:bg-gray-700 
+                    hover:bg-gray-300 dark:hover:bg-gray-900 transition-all duration-300 '>
                         Login / Register
                 </button>
                 {/* Job post button */}
@@ -66,7 +67,7 @@ const Nav = ({openNav}:Props) => {
                         Job Post
                 </button>
                 {/* Theme toggler */}
-
+                <ThemeToggler />
                 {/* Burger menu */}
                 <HiBars3BottomRight 
                     onClick={openNav}
